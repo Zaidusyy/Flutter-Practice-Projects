@@ -7,7 +7,7 @@ class Home extends StatelessWidget {
   List<String> _servicesNameList = [
     "Consultations",
     "Medicines",
-    "Laboratory"
+    "Laboratories"
   ];
 
   @override
@@ -62,7 +62,7 @@ class Home extends StatelessWidget {
                         color: Colors.white),
                     child: Center(
                       child: Image.asset(
-                        'assets/images/synevo.png',
+                        'assets/images/synevologo.png',
                         height: 25,
                       ),
                     ),
