@@ -76,6 +76,7 @@ class _ResultsState extends State<Results> with SingleTickerProviderStateMixin {
           indicatorWeight: 0,
           labelColor: Colors.white,
           unselectedLabelColor: Colors.black,
+      
           tabs: const [
             Tab(text: '    All Results     '),
             Tab(text: '      X-Ray       '),
