@@ -1,4 +1,5 @@
 import 'package:day2/home.dart';
+import 'package:day2/results.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,8 +12,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      color: Colors.transparent,
       debugShowCheckedModeBanner: false,
-      home: Home(),
+      home: Results(),
     );
   }
 }
