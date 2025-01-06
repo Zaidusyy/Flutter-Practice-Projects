@@ -29,7 +29,38 @@ class Appointments extends StatelessWidget {
               size: 30,
             ),
           ),
+          SizedBox(
+            width: 10,
+          ),
         ],
+        bottom: PreferredSize(
+            preferredSize: Size(double.infinity, 120),
+            child: SizedBox(
+              height: 120,
+              child: ListView.builder(
+                itemCount: 10,
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, index) => Container(
+                    height: 120,
+                    width: 80,
+                    margin: const EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      color: (index == 1)
+                          ? Colors.orange
+                          : Colors.grey.withAlpha(40),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Center(
+                      child: Text(
+                        'Day ${index + 1}',
+                        style: TextStyle(
+                          color: (index == 1) ? Colors.white : Colors.black,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  )),
+            )),
       ),
     );
   }

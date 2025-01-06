@@ -1,3 +1,4 @@
+import 'package:day2/appointments.dart';
 import 'package:day2/home.dart';
 import 'package:day2/results.dart';
 import 'package:flutter/cupertino.dart';
@@ -17,7 +18,7 @@ class _HomescreenState extends State<Homescreen> {
   // List of screens for each BottomNavigationBar item
   final List<Widget> _screens = [
     Home(),  // Home screen
-  //  Appointments(),  // Appointments screen
+   Appointments(),  // Appointments screen
    // Chats(),  // Chats screen
     Results(),  // Lab screen
    // Profile(),  // Profile screen
@@ -30,7 +31,7 @@ class _HomescreenState extends State<Homescreen> {
       body: Stack(
         children: [
           IndexedStack(
-            index: _currentIndex%2,  // Keeps the selected screen visible
+            index: _currentIndex%3,  // Keeps the selected screen visible
             children: _screens,  // List of screens to display
           ),
           Align(
