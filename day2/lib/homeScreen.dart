@@ -4,7 +4,6 @@ import 'package:day2/results.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-
 class Homescreen extends StatefulWidget {
   const Homescreen({super.key});
 
@@ -15,13 +14,16 @@ class Homescreen extends StatefulWidget {
 class _HomescreenState extends State<Homescreen> {
   int _currentIndex = 0;
 
-  // List of screens for each BottomNavigationBar item
   final List<Widget> _screens = [
-    Home(),  // Home screen
-   Appointments(),  // Appointments screen
-   // Chats(),  // Chats screen
-    Results(),  // Lab screen
-   // Profile(),  // Profile screen
+    Home(),
+    Appointments(),
+    Center(
+      child: Text('chat'),
+    ),
+    Results(),
+    Center(
+      child: Text('Profile'),
+    ),
   ];
 
   @override
@@ -31,17 +33,16 @@ class _HomescreenState extends State<Homescreen> {
       body: Stack(
         children: [
           IndexedStack(
-            index: _currentIndex%3,  // Keeps the selected screen visible
-            children: _screens,  // List of screens to display
+            index: _currentIndex,
+            children: _screens,
           ),
           Align(
             alignment: Alignment.bottomCenter,
             child: Container(
-              margin:  EdgeInsets.only(bottom: 30, left: 15, right: 15),
+              margin: EdgeInsets.only(bottom: 30, left: 15, right: 15),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(30),
-
               ),
               child: Material(
                 color: Colors.transparent,
