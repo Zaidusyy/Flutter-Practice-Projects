@@ -47,7 +47,7 @@ class _ResultsState extends State<Results> with SingleTickerProviderStateMixin {
             child: Icon(
               CupertinoIcons.search,
               color: Colors.black,
-              size: 30,
+              size: 25,
             ),
           ),
           Container(

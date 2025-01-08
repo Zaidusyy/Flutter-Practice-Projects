@@ -1,4 +1,5 @@
 import 'package:day2/appointments.dart';
+import 'package:day2/chat.dart';
 import 'package:day2/home.dart';
 import 'package:day2/results.dart';
 import 'package:flutter/cupertino.dart';
@@ -17,9 +18,7 @@ class _HomescreenState extends State<Homescreen> {
   final List<Widget> _screens = [
     Home(),
     Appointments(),
-    Center(
-      child: Text('chat'),
-    ),
+    Chat(),
     Results(),
     Center(
       child: Text('Profile'),

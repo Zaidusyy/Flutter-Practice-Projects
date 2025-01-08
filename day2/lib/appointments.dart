@@ -41,7 +41,7 @@ class _AppointmentsState extends State<Appointments> {
               child: Icon(
                 CupertinoIcons.search,
                 color: Colors.black,
-                size: 30,
+                size: 25,
               ),
             ),
             SizedBox(
