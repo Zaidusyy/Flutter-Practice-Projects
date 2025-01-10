@@ -38,8 +38,7 @@ class Chat extends StatelessWidget {
           itemCount: 15,
           itemBuilder: (context, index) => Container(
                 width: double.infinity,
-
-                margin: EdgeInsets.symmetric(horizontal: 15,vertical: 5),
+                margin: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
                 padding:
                     EdgeInsets.only(top: 5, left: 10, right: 10, bottom: 5),
                 decoration: BoxDecoration(
@@ -80,7 +79,9 @@ class Chat extends StatelessWidget {
                   ),
                   subtitle: Text(
                     'hii your prescription of the recent appointment is ready',
-                    style: TextStyle(color: Colors.grey, fontSize: 15),overflow: TextOverflow.ellipsis,maxLines: 2,
+                    style: TextStyle(color: Colors.grey, fontSize: 15),
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 2,
                   ),
                   trailing: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,

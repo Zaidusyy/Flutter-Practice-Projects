@@ -1,6 +1,7 @@
 import 'package:day2/appointments.dart';
 import 'package:day2/chat.dart';
 import 'package:day2/home.dart';
+import 'package:day2/profile.dart';
 import 'package:day2/results.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -20,9 +21,7 @@ class _HomescreenState extends State<Homescreen> {
     Appointments(),
     Chat(),
     Results(),
-    Center(
-      child: Text('Profile'),
-    ),
+    Profile(),
   ];
 
   @override
