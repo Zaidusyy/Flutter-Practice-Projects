@@ -79,7 +79,7 @@ class Chat extends StatelessWidget {
                         fontSize: 18),
                   ),
                   subtitle: Text(
-                    'hii your prescription of the recent appointment is ready...',
+                    'hii your prescription of the recent appointment is ready',
                     style: TextStyle(color: Colors.grey, fontSize: 15),overflow: TextOverflow.ellipsis,maxLines: 2,
                   ),
                   trailing: Column(
