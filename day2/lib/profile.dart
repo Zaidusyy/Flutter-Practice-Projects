@@ -10,10 +10,24 @@ class Profile extends StatelessWidget {
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
-        title: Text(
-          'Hey, Zaid 😊',
-          style: TextStyle(
-              color: Colors.black, fontWeight: FontWeight.bold, fontSize: 25),
+        title: Row(
+          spacing: 10,
+          children: [
+            CircleAvatar(
+              backgroundColor: Colors.grey.withAlpha(40),
+              backgroundImage: AssetImage(
+                'assets/images/profile.jpeg',
+              ),
+              radius: 25,
+            ),
+            Text(
+              'Hey, Zaid 😊',
+              style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 25),
+            ),
+          ],
         ),
       ),
       body: SingleChildScrollView(
@@ -25,6 +39,7 @@ class Profile extends StatelessWidget {
             spacing: 5,
             children: [
               Container(
+                margin: EdgeInsets.symmetric(vertical: 15),
                 width: double.infinity,
                 padding: EdgeInsets.all(20),
                 decoration: BoxDecoration(
@@ -36,7 +51,7 @@ class Profile extends StatelessWidget {
                   children: [
                     Text(
                       '🙌 Long time no see! Your last checkup was 12 months ago.We recommend visiting your doctor.',
-                      style: TextStyle(color: Colors.deepOrange, fontSize: 16),
+                      style: TextStyle(color: Colors.deepOrange, fontSize: 15),
                     ),
                     InkWell(
                       highlightColor: Colors.transparent,
@@ -76,16 +91,17 @@ class Profile extends StatelessWidget {
               Align(
                 alignment: Alignment.center,
                 child: TextButton(
-                  style:  TextButton.styleFrom(
+                  style: TextButton.styleFrom(
                     splashFactory: NoSplash.splashFactory,
                     overlayColor: Colors.transparent,
                   ),
-                    onPressed: () {},
-                    child: Text(
-                      'Sign Out',
-                      style: TextStyle(color: Colors.deepOrange, fontSize: 20),
-                      textAlign: TextAlign.center,
-                    ),),
+                  onPressed: () {},
+                  child: Text(
+                    'Sign Out',
+                    style: TextStyle(color: Colors.deepOrange, fontSize: 20),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
               )
             ],
           ),
