@@ -5,9 +5,9 @@ class Home extends StatelessWidget {
   Home({super.key});
 
   List<String> _servicesNameList = [
-    "Consultations",
-    "Medicines",
-    "Laboratories"
+    'Consultations',
+    'Medicines',
+    'Laboratories'
   ];
 
   @override
