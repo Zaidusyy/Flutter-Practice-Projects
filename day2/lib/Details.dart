@@ -89,7 +89,8 @@ class Details extends StatelessWidget {
                   Expanded(
                     child: Container(
                       height: 75,
-                      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                       decoration: BoxDecoration(
                           color: Colors.grey.withAlpha(40),
                           borderRadius: BorderRadius.circular(15)),
@@ -108,7 +109,8 @@ class Details extends StatelessWidget {
                   Expanded(
                     child: Container(
                       height: 75,
-                      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                       decoration: BoxDecoration(
                           color: Colors.grey.withAlpha(40),
                           borderRadius: BorderRadius.circular(15)),
@@ -202,8 +204,8 @@ class Details extends StatelessWidget {
               SizedBox(
                 height: 170,
                 child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: 10,
+                    scrollDirection: Axis.horizontal,
+                    itemCount: 10,
                     itemBuilder: (context, index) => Container(
                           height: 170,
                           width: 350,
@@ -227,7 +229,8 @@ class Details extends StatelessWidget {
                                   ),
                                   Expanded(
                                     child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       spacing: 5,
@@ -262,6 +265,26 @@ class Details extends StatelessWidget {
                             ],
                           ),
                         )),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              SizedBox(
+                width: double.infinity,
+                height: 60,
+                child: ElevatedButton(
+                  onPressed: () {},
+                  style: ButtonStyle(
+                      backgroundColor: WidgetStatePropertyAll(Colors.black),
+                      foregroundColor: WidgetStatePropertyAll(Colors.white),splashFactory: NoSplash.splashFactory),
+                  child: Text(
+                    'Make an Appointment',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                    ),
+                  ),
+                ),
               )
             ],
           ),
