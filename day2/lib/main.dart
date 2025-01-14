@@ -1,6 +1,5 @@
-import 'package:day2/home.dart';
+import 'package:day2/Details.dart';
 import 'package:day2/homeScreen.dart';
-import 'package:day2/results.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -15,7 +14,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       color: Colors.transparent,
       debugShowCheckedModeBanner: false,
-      home: Homescreen(),
+     // home: Homescreen(),
+      home: Details(),
     );
   }
 }
