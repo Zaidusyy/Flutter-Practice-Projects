@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'generated/assets.dart';
+
 class Home extends StatelessWidget {
   Home({super.key});
 
@@ -206,7 +208,7 @@ class Home extends StatelessWidget {
                               decoration: BoxDecoration(
                                   image: DecorationImage(
                                       image: AssetImage(
-                                          'assets/images/Doctor${index % 2 + 1}.jpg'),
+                                          Assets.instance.doctors[index%2]['imageUrl']),
                                       fit: BoxFit.cover),
                                   borderRadius: BorderRadius.circular(10)),
                             ),
@@ -219,18 +221,14 @@ class Home extends StatelessWidget {
                               children: [
                                 SizedBox(),
                                 Text(
-                                  (index % 2 == 0)
-                                      ? 'Dr.Albert Flores'
-                                      : 'Dr.Alina',
+                                  Assets.instance.doctors[index%2]['name'],
                                   style: TextStyle(
                                       color: Colors.black,
                                       fontWeight: FontWeight.bold,
                                       fontSize: 18),
                                 ),
                                 Text(
-                                  (index % 2 == 0)
-                                      ? 'Cardiologist'
-                                      : 'Dermatologist',
+                                  Assets.instance.doctors[index%2]['specialty'],
                                   style: TextStyle(
                                       color: Colors.grey, fontSize: 15),
                                 ),

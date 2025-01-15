@@ -1,5 +1,8 @@
+import 'package:day2/Details.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import 'generated/assets.dart';
 
 class Chat extends StatelessWidget {
   const Chat({super.key});
@@ -52,7 +55,7 @@ class Chat extends StatelessWidget {
                         radius: 30,
                         backgroundColor: Colors.white,
                         backgroundImage: AssetImage(
-                            'assets/images/Doctor${index % 2 + 1}.jpg'),
+                            Assets.instance.doctors[index % 2]['imageUrl']),
                       ),
                       (index % 3 == 0)
                           ? Positioned(
@@ -71,7 +74,7 @@ class Chat extends StatelessWidget {
                     ],
                   ),
                   title: Text(
-                    (index % 2 == 0) ? 'Dr.Albert Flores' : 'Dr.Alina',
+                    Assets.instance.doctors[index % 2]['name'],
                     style: TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.bold,
