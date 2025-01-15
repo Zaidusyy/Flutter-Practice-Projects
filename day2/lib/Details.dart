@@ -1,7 +1,13 @@
+import 'package:day2/generated/assets.dart';
 import 'package:flutter/material.dart';
 
 class Details extends StatelessWidget {
-  const Details({super.key});
+
+
+  final tag;
+  const Details({super.key,required this.tag});
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -26,27 +32,30 @@ class Details extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Container(
-                margin: EdgeInsets.symmetric(vertical: 10),
-                height: 100,
-                width: 100,
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
-                    color: Colors.blue,
-                    image: DecorationImage(
-                        image: AssetImage('assets/images/Doctor2.jpg'),
-                        fit: BoxFit.cover)),
+              Hero(
+                tag: tag,
+                child: Container(
+                  margin: EdgeInsets.symmetric(vertical: 10),
+                  height: 100,
+                  width: 100,
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      color: Colors.blue,
+                      image: DecorationImage(
+                          image: AssetImage(Assets.instance.doctors[tag%2]['imageUrl']),
+                          fit: BoxFit.cover)),
+                ),
               ),
               Text(
-                'Dr.Maria Tereza',
+                Assets.instance.doctors[tag%2]['name'],
                 style: TextStyle(
                     color: Colors.black,
                     fontSize: 20,
                     fontWeight: FontWeight.bold),
               ),
               Text(
-                'Cardiologist',
+                Assets.instance.doctors[tag%2]['specialty'],
                 style: TextStyle(
                   color: Colors.grey,
                   fontSize: 16,
@@ -55,8 +64,9 @@ class Details extends StatelessWidget {
               SizedBox(
                 height: 15,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+              Wrap(
+                alignment: WrapAlignment.center,
+             //   mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Icon(
                     Icons.location_on_outlined,
@@ -64,14 +74,14 @@ class Details extends StatelessWidget {
                     size: 21,
                   ),
                   Text(
-                    'Viva Clinic ',
+                    ' '+Assets.instance.doctors[tag%2]['clinicName']+' ',
                     style: TextStyle(
                         color: Colors.black,
                         fontSize: 16,
                         fontWeight: FontWeight.w500),
                   ),
                   Text(
-                    'Mykoly Lavrukhina St. 6, Kyiv',
+                    Assets.instance.doctors[tag%2]['location'],
                     style: TextStyle(
                         color: Colors.deepOrange,
                         fontSize: 16,
@@ -130,7 +140,7 @@ class Details extends StatelessWidget {
                                   size: 25,
                                 ),
                                 Text(
-                                  '5.0',
+                                  Assets.instance.doctors[tag%2]['rating'].toString(),
                                   style: TextStyle(
                                       color: Colors.deepOrange,
                                       fontSize: 22,
@@ -167,7 +177,7 @@ class Details extends StatelessWidget {
                 ),
               ),
               Text(
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vitae lorem eros. Sed gravida dictum nulla. Fusce eget blandit lectus. Vestibulum ultricies tincidunt maximus. Quisque dictum lorem sem. Sed tristique vel metus eu varius. Nullam venenatis dolor eget erat egestas sodales. Aliquam aliquet nunc non aliquet sollicitudin. Pellentesque accumsan odio.',
+               Assets.instance.doctors[tag%2]['description'],
                 style: TextStyle(
                   color: Colors.grey,
                   fontSize: 16,
@@ -225,7 +235,7 @@ class Details extends StatelessWidget {
                                     radius: 25,
                                     backgroundColor: Colors.white,
                                     backgroundImage:
-                                        AssetImage('assets/images/Doctor1.jpg'),
+                                        AssetImage('assets/images/person${index%2+1}.jpg'),
                                   ),
                                   Expanded(
                                     child: Column(
@@ -267,7 +277,7 @@ class Details extends StatelessWidget {
                         )),
               ),
               SizedBox(
-                height: 20,
+                height: 30,
               ),
               SizedBox(
                 width: double.infinity,

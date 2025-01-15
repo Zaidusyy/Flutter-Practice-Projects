@@ -55,7 +55,6 @@ class Home extends StatelessWidget {
               ),
             ],
           ),
-
           SizedBox(
             width: 10,
           )
@@ -69,7 +68,7 @@ class Home extends StatelessWidget {
           children: [
             Container(
               padding: EdgeInsets.symmetric(horizontal: 15),
-              margin: EdgeInsets.only(top: 10, right: 15,left: 15),
+              margin: EdgeInsets.only(top: 10, right: 15, left: 15),
               width: double.infinity,
               height: 65,
               decoration: BoxDecoration(
@@ -111,7 +110,6 @@ class Home extends StatelessWidget {
                 ],
               ),
             ),
-
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 15),
               child: TextFormField(
@@ -129,7 +127,6 @@ class Home extends StatelessWidget {
                     )),
               ),
             ),
-
             Padding(
               padding: EdgeInsets.only(left: 15),
               child: Text(
@@ -148,7 +145,7 @@ class Home extends StatelessWidget {
                   itemCount: _servicesNameList.length * 2,
                   itemBuilder: (context, index) => Container(
                         padding: EdgeInsets.all(5),
-                        margin: EdgeInsets.only(left: 15,top: 5,bottom: 5),
+                        margin: EdgeInsets.only(left: 15, top: 5, bottom: 5),
                         height: 100,
                         width: 140,
                         decoration: BoxDecoration(
@@ -177,7 +174,6 @@ class Home extends StatelessWidget {
                         ),
                       )),
             ),
-
             Padding(
               padding: EdgeInsets.only(left: 15),
               child: Text(
@@ -196,7 +192,7 @@ class Home extends StatelessWidget {
                   itemBuilder: (context, index) => Container(
                         //  height: 120,
                         // width: 300,
-                        margin: EdgeInsets.only(top: 5,left: 15,bottom: 5),
+                        margin: EdgeInsets.only(top: 5, left: 15, bottom: 5),
                         padding: EdgeInsets.all(10),
                         decoration: BoxDecoration(
                             color: Colors.grey.withAlpha(40),
@@ -316,75 +312,85 @@ class Home extends StatelessWidget {
             ),
             SizedBox(
               height: 160,
-              child: ListView.builder(scrollDirection: Axis.horizontal,itemCount: 5,itemBuilder: (context,index)=>Container(
-                padding: EdgeInsets.all(20),
-                margin: EdgeInsets.only(top: 10,left: 15),
-                height: 150,
-                width: 350,
-                decoration: BoxDecoration(
-                    gradient: RadialGradient(
-                        colors: [
-                          Colors.orange,
-                          Colors.deepOrangeAccent,
-                          Colors.deepOrange.shade400,
-                          Colors.deepOrange.shade500,
-                        ],
-                        center: Alignment.bottomRight,
-                        radius: 1,
-                        tileMode: TileMode.repeated),
-                    color: Colors.deepOrange,
-                    borderRadius: BorderRadius.circular(20)),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Text(
-                  (index%2==0)?'Comprehensive cardiological examination':'Detailed dermatological assessment',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                          fontWeight: FontWeight.w600),
-                    ),
-                    Spacer(),
-                    Row(
-                      children: [
-                        Container(
-                          padding: EdgeInsets.all(5),
-                          height: 30,
-                          width: 70,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(5),
-                              color: Colors.white),
-                          child: Center(
-                            child: Image.asset(
-                              'assets/images/' + ((index % 2 == 0) ? 'abbott' : 'synevologo') + '.png',
+              child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: 5,
+                  itemBuilder: (context, index) => Container(
+                        padding: EdgeInsets.all(20),
+                        margin: EdgeInsets.only(top: 10, left: 15),
+                        height: 150,
+                        width: 350,
+                        decoration: BoxDecoration(
+                            gradient: RadialGradient(
+                                colors: [
+                                  Colors.orange,
+                                  Colors.deepOrangeAccent,
+                                  Colors.deepOrange.shade400,
+                                  Colors.deepOrange.shade500,
+                                ],
+                                center: Alignment.bottomRight,
+                                radius: 1,
+                                tileMode: TileMode.repeated),
+                            color: Colors.deepOrange,
+                            borderRadius: BorderRadius.circular(20)),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Text(
+                              (index % 2 == 0)
+                                  ? 'Comprehensive cardiological examination'
+                                  : 'Detailed dermatological assessment',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w600),
                             ),
-
-                          ),
+                            Spacer(),
+                            Row(
+                              children: [
+                                Container(
+                                  padding: EdgeInsets.all(5),
+                                  height: 30,
+                                  width: 70,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(5),
+                                      color: Colors.white),
+                                  child: Center(
+                                    child: Image.asset(
+                                      'assets/images/' +
+                                          ((index % 2 == 0)
+                                              ? 'abbott'
+                                              : 'synevologo') +
+                                          '.png',
+                                    ),
+                                  ),
+                                ),
+                                Spacer(),
+                                Container(
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: 10, vertical: 5),
+                                  decoration: BoxDecoration(
+                                    color: Colors.black,
+                                    borderRadius: BorderRadius.circular(20),
+                                  ),
+                                  child: Text(
+                                    (index % 2 == 0) ? '-20%' : '-18%',
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 20),
+                                  ),
+                                )
+                              ],
+                            )
+                          ],
                         ),
-                        Spacer(),
-                        Container(
-                          padding:
-                          EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                          decoration: BoxDecoration(
-                            color: Colors.black,
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          child: Text(
-                            (index%2==0)?'-20%':'-18%',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.w600,
-                                fontSize: 20),
-                          ),
-                        )
-                      ],
-                    )
-                  ],
-                ),
-              )),
+                      )),
             ),
-            SizedBox(height: 20,)
+            SizedBox(
+              height: 20,
+            )
           ],
         ),
       ),

@@ -1,5 +1,8 @@
+import 'package:day2/Details.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import 'generated/assets.dart';
 
 class Appointments extends StatefulWidget {
   const Appointments({super.key});
@@ -180,28 +183,31 @@ class _AppointmentsState extends State<Appointments> {
                 child: Column(
                   children: [
                     ListTile(
+                      splashColor: Colors.transparent,
+                      onTap: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Details(tag:index)));
+                      },
                       contentPadding: EdgeInsets.zero,
-                      leading: ClipRRect(
-                          borderRadius: BorderRadius.circular(10),
-                          child: Image.asset(
-                            'assets/images/Doctor${index % 2 + 1}.jpg',
-                            width: 60,
-                            height: 60,
-                            fit: BoxFit.cover,
-                          )),
+                      leading: Hero(
+                        tag: index,
+                        child: ClipRRect(
+                            borderRadius: BorderRadius.circular(10),
+                            child: Image.asset(
+                              Assets.instance.doctors[index%2]['imageUrl'],
+                              width: 60,
+                              height: 60,
+                              fit: BoxFit.cover,
+                            )),
+                      ),
                       title: Text(
-                        (index % 2 == 0)
-                            ? 'Dr.Albert Flores'
-                            : 'Dr.Alina',
+                        Assets.instance.doctors[index%2]['name'],
                         style: TextStyle(
                             color: Colors.black,
                             fontWeight: FontWeight.bold,
                             fontSize: 18),
                       ),
                       subtitle: Text(
-                        (index % 2 == 0)
-                            ? 'Cardiologist'
-                            : 'Dermatologist',
+                        Assets.instance.doctors[index%2]['specialty'],
                         style: TextStyle(
                             color: Colors.grey, fontSize: 15),
                       ),
@@ -223,18 +229,14 @@ class _AppointmentsState extends State<Appointments> {
                         size: 25,
                       ),
                       title: Text(
-                        (index % 2 == 0)
-                            ? 'Viva Clinic'
-                            : 'Dobrobut',
+                        Assets.instance.doctors[index%2]['clinicName'],
                         style: TextStyle(
                             color: Colors.black,
                             fontWeight: FontWeight.bold,
                             fontSize: 16),
                       ),
                       subtitle: Text(
-                        (index % 2 == 0)
-                            ? 'Mykoly Lavrukhina St. 6, Kyiv'
-                            : 'Tatarska St. 2e, Kyiv',
+                        Assets.instance.doctors[index%2]['location'],
                         style: TextStyle(
                             color: Colors.deepOrange, fontSize: 12),
                       ),
