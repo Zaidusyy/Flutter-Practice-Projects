@@ -4,37 +4,45 @@ import 'package:flutter/material.dart';
 import 'generated/assets.dart';
 
 class Chatscreen extends StatelessWidget {
-  const Chatscreen({super.key});
+  final index;
+  const Chatscreen({super.key,required this.index});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
+          leadingWidth:20,
           backgroundColor: Colors.white,
-          leading: CircleAvatar(
-            radius: 30,
-            backgroundColor: Colors.white,
-            backgroundImage: AssetImage(Assets.imagesDoctor2),
-          ),
-          title: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          title: Row(
             mainAxisAlignment: MainAxisAlignment.start,
+            spacing: 5,
             children: [
-              Text(
-                Assets.instance.doctors[2]['name'],
-                style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.w600,
-                    fontSize: 20),
+              CircleAvatar(
+                radius: 25,
+                backgroundColor: Colors.white,
+                backgroundImage: AssetImage(Assets.instance.doctors[index%2]['imageUrl']),
               ),
-              Text(
-                '⦿ Online',
-                style: TextStyle(
-                    color: Colors.green,
-                    fontSize: 12,
-                    fontWeight: FontWeight.w500),
-              )
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Text(
+                    Assets.instance.doctors[index%2]['name'],
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 20),
+                  ),
+                  Text(
+                    '⦿ Online',
+                    style: TextStyle(
+                        color: Colors.green,
+                        fontSize: 12,
+                        fontWeight: FontWeight.w500),
+                  )
+                ],
+              ),
             ],
           ),
           actions: [
@@ -88,7 +96,7 @@ class Chatscreen extends StatelessWidget {
                                   children: [
                                     Text(
                                       '   ' +
-                                          Assets.instance.doctors[2]['name'],
+                                          Assets.instance.doctors[index%2]['name'],
                                       style: TextStyle(
                                           color: Colors.grey,
                                           fontSize: 13,

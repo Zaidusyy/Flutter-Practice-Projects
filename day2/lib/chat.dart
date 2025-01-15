@@ -1,4 +1,5 @@
 import 'package:day2/Details.dart';
+import 'package:day2/chatscreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -48,6 +49,9 @@ class Chat extends StatelessWidget {
                     color: Colors.grey.withAlpha(40),
                     borderRadius: BorderRadius.circular(15)),
                 child: ListTile(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>Chatscreen(index: index,)));
+                  },
                   contentPadding: EdgeInsets.zero,
                   leading: Stack(
                     children: [
