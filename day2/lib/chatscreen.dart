@@ -72,15 +72,23 @@ class Chatscreen extends StatelessWidget {
                 children: [
                   Expanded(
                     child: ListView.builder(
-                      itemCount: 5,
-                        itemBuilder: (context, index) => (index % 2 == 0)
+                        itemCount: 13,
+                        itemBuilder: (context, index) => (index==0)? Text(
+                          'Today',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              color: Colors.grey,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w400),
+                        ):(index % 2 == 0)
                             ? Align(
                                 alignment: AlignmentDirectional.topStart,
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      '   ' + Assets.instance.doctors[2]['name'],
+                                      '   ' +
+                                          Assets.instance.doctors[2]['name'],
                                       style: TextStyle(
                                           color: Colors.grey,
                                           fontSize: 13,
@@ -93,22 +101,27 @@ class Chatscreen extends StatelessWidget {
                                           top: 5, bottom: 10, right: 80),
                                       decoration: BoxDecoration(
                                           color: Colors.grey.withAlpha(40),
-                                          borderRadius: BorderRadius.circular(20)),
+                                          borderRadius:
+                                              BorderRadius.circular(20)),
                                       child: Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
                                         children: [
                                           Text(
                                             'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters',
                                             style: TextStyle(
-                                                color: Colors.black, fontSize: 12),
+                                                color: Colors.black,
+                                                fontSize: 12),
                                             textAlign: TextAlign.left,
                                           ),
                                           Align(
-                                            alignment: AlignmentDirectional.bottomEnd,
+                                            alignment:
+                                                AlignmentDirectional.bottomEnd,
                                             child: Text(
                                               '10:32',
                                               style: TextStyle(
-                                                  color: Colors.grey, fontSize: 12),
+                                                  color: Colors.grey,
+                                                  fontSize: 12),
                                               textAlign: TextAlign.end,
                                             ),
                                           )
@@ -126,35 +139,48 @@ class Chatscreen extends StatelessWidget {
                                   children: [
                                     Text(
                                       'You     ',
-                                      style:
-                                          TextStyle(color: Colors.grey, fontSize: 13),
+                                      style: TextStyle(
+                                          color: Colors.grey, fontSize: 13),
                                     ),
                                     Container(
                                       alignment: AlignmentDirectional.topEnd,
                                       padding: EdgeInsets.all(10),
-                                      margin: EdgeInsets.only(bottom: 10, left: 80),
+                                      margin:
+                                          EdgeInsets.only(bottom: 10, left: 80),
                                       decoration: BoxDecoration(
                                           color: Colors.white,
                                           border: Border.all(
                                               color: Colors.grey.withAlpha(150),
                                               width: 1),
-                                          borderRadius: BorderRadius.circular(20)),
+                                          borderRadius:
+                                              BorderRadius.circular(20)),
                                       child: Column(
                                         children: [
                                           Text(
                                             'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters',
                                             style: TextStyle(
-                                                color: Colors.black, fontSize: 12),
+                                                color: Colors.black,
+                                                fontSize: 12),
                                             textAlign: TextAlign.start,
                                           ),
-                                          Align(
-                                            alignment: AlignmentDirectional.bottomEnd,
-                                            child: Text(
-                                              '10:32',
-                                              style: TextStyle(
-                                                  color: Colors.grey, fontSize: 12),
-                                              textAlign: TextAlign.end,
-                                            ),
+                                          Row(
+                                            spacing: 5,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.end,
+                                            children: [
+                                              Text(
+                                                '10:32',
+                                                style: TextStyle(
+                                                    color: Colors.grey,
+                                                    fontSize: 12),
+                                                textAlign: TextAlign.end,
+                                              ),
+                                              Icon(
+                                                CupertinoIcons.check_mark,
+                                                size: 12,
+                                                color:(index<12)?Colors.lightBlueAccent: Colors.grey,
+                                              )
+                                            ],
                                           )
                                         ],
                                       ),
@@ -163,7 +189,9 @@ class Chatscreen extends StatelessWidget {
                                 ),
                               )),
                   ),
-                  SizedBox(height: 50,)
+                  SizedBox(
+                    height: 50,
+                  )
                 ],
               ),
             ),
@@ -176,9 +204,9 @@ class Chatscreen extends StatelessWidget {
   }
 
   _buildmessageinput() => Container(
-    height: 70,
+        height: 70,
         color: Colors.white,
-        padding: EdgeInsets.symmetric(horizontal: 5,vertical: 10),
+        padding: EdgeInsets.symmetric(horizontal: 5, vertical: 10),
         child: Row(
           spacing: 5,
           children: [
