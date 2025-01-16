@@ -1,6 +1,5 @@
-import 'package:day2/Details.dart';
-import 'package:day2/chatscreen.dart';
 import 'package:day2/homeScreen.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -15,8 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       color: Colors.transparent,
       debugShowCheckedModeBanner: false,
-      home: Homescreen(),
-
+       home: Homescreen(),
     );
   }
 }
