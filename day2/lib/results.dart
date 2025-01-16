@@ -76,7 +76,6 @@ class _ResultsState extends State<Results> with SingleTickerProviderStateMixin {
           indicatorWeight: 0,
           labelColor: Colors.white,
           unselectedLabelColor: Colors.black,
-      
           tabs: const [
             Tab(text: '    All Results     '),
             Tab(text: '      X-Ray       '),
@@ -149,9 +148,72 @@ class _ResultsState extends State<Results> with SingleTickerProviderStateMixin {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         spacing: 10,
                         children: [
-                          Text(
-                            'Filters',
-                            style: TextStyle(fontSize: 15),
+                          TextButton(
+                            style: ButtonStyle(splashFactory:NoSplash.splashFactory),
+                            onPressed: () {
+                              showModalBottomSheet(
+                                  context: context,
+                                  builder: (context) => Container(
+                                        padding: EdgeInsets.all(15),
+                                        height: 600,
+                                        width: double.infinity,
+                                        decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius: BorderRadius.only(
+                                                topLeft: Radius.circular(50),
+                                                topRight: Radius.circular(50))),
+                                        child: Column(
+                                          spacing: 10,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          children: [
+                                            Container(
+                                              height: 5,
+                                              width: 50,
+                                              decoration: BoxDecoration(
+                                                  color: Colors.grey
+                                                      .withAlpha(150),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          20)),
+                                            ),
+                                            Row(
+                                              children: [
+                                                Text(
+                                                  'Filters',
+                                                  style: TextStyle(
+                                                      color: Colors.black,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontSize: 25),
+                                                ),
+                                                Spacer(),
+                                                CircleAvatar(
+                                                  radius: 25,
+                                                  backgroundColor: Colors.grey.withAlpha(40),
+                                                  child: IconButton(
+                                                    onPressed: () {
+                                                      Navigator.pop(context);
+                                                    },
+                                                    icon: Icon(
+                                                      CupertinoIcons.xmark,
+                                                      color: Colors.black,
+                                                      size: 25,
+                                                    ),
+                                                    color: Colors.grey,
+                                                  ),
+                                                ),
+
+                                              ],
+                                            )
+                                          ],
+                                        ),
+                                      ));
+                            },
+                            child: Text(
+                              'Filters',
+                              style: TextStyle(fontSize: 15,color: Colors.black),
+                            ),
                           ),
                           CircleAvatar(
                             maxRadius: 12,

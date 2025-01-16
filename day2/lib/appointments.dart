@@ -146,112 +146,113 @@ class _AppointmentsState extends State<Appointments> {
       ),
     );
   }
-  _buildAppointmentList()=>ListView.builder(
+
+  _buildAppointmentList() => ListView.builder(
       itemBuilder: (context, index) => Container(
-        margin: EdgeInsets.symmetric(horizontal: 15,vertical: 5),
-        width: double.infinity,
-        child: Row(
-          spacing: 10,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Column(
-              spacing: 5,
+            margin: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+            width: double.infinity,
+            child: Row(
+              spacing: 10,
               crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Text(
-                  (index%2==0)?'14:20':'16:30',
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20),
-                ),
-                Text(
-                  '30 min',
-                  style:
-                  TextStyle(color: Colors.grey, fontSize: 15),
-                ),
-              ],
-            ),
-            Expanded(
-              child: Container(
-
-                padding: EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                    color: Colors.grey.withAlpha(40),
-                    borderRadius: BorderRadius.circular(15)),
-                child: Column(
+                Column(
+                  spacing: 5,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    ListTile(
-                      splashColor: Colors.transparent,
-                      onTap: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Details(tag:index)));
-                      },
-                      contentPadding: EdgeInsets.zero,
-                      leading: Hero(
-
-                        tag: index,
-                        child: ClipRRect(
-                            borderRadius: BorderRadius.circular(10),
-                            child: Image.asset(
-                              Assets.instance.doctors[index%2]['imageUrl'],
-                              width: 60,
-                              height: 60,
-                              fit: BoxFit.cover,
-                            )),
-                      ),
-                      title: Text(
-                        Assets.instance.doctors[index%2]['name'],
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18),
-                      ),
-                      subtitle: Text(
-                        Assets.instance.doctors[index%2]['specialty'],
-                        style: TextStyle(
-                            color: Colors.grey, fontSize: 15),
-                      ),
-                      trailing: Icon(
-                        CupertinoIcons.ellipsis_vertical,
-                        color: Colors.grey,
-                        size: 25,
-                      ),
+                    Text(
+                      (index % 2 == 0) ? '14:20' : '16:30',
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20),
                     ),
-                    Divider(
-                      color: Colors.grey,
-                      thickness: 1,
-                    ),
-                    ListTile(
-                      contentPadding: EdgeInsets.zero,
-                      leading: Icon(
-                        Icons.location_on_outlined,
-                        color: Colors.grey,
-                        size: 25,
-                      ),
-                      title: Text(
-                        Assets.instance.doctors[index%2]['clinicName'],
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16),
-                      ),
-                      subtitle: Text(
-                        Assets.instance.doctors[index%2]['location'],
-                        style: TextStyle(
-                            color: Colors.deepOrange, fontSize: 12),
-                      ),
-                      trailing: Icon(
-                        CupertinoIcons.right_chevron,
-                        color: Colors.grey,
-                        size: 25,
-                      ),
+                    Text(
+                      '30 min',
+                      style: TextStyle(color: Colors.grey, fontSize: 15),
                     ),
                   ],
                 ),
-              ),
+                Expanded(
+                  child: Container(
+                    padding: EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                        color: Colors.grey.withAlpha(40),
+                        borderRadius: BorderRadius.circular(15)),
+                    child: Column(
+                      children: [
+                        ListTile(
+                          splashColor: Colors.transparent,
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Details(tag: index)));
+                          },
+                          contentPadding: EdgeInsets.zero,
+                          leading: Hero(
+                            tag: index,
+                            child: ClipRRect(
+                                borderRadius: BorderRadius.circular(10),
+                                child: Image.asset(
+                                  Assets.instance.doctors[index % 2]
+                                      ['imageUrl'],
+                                  width: 60,
+                                  height: 60,
+                                  fit: BoxFit.cover,
+                                )),
+                          ),
+                          title: Text(
+                            Assets.instance.doctors[index % 2]['name'],
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18),
+                          ),
+                          subtitle: Text(
+                            Assets.instance.doctors[index % 2]['specialty'],
+                            style: TextStyle(color: Colors.grey, fontSize: 15),
+                          ),
+                          trailing: Icon(
+                            CupertinoIcons.ellipsis_vertical,
+                            color: Colors.grey,
+                            size: 25,
+                          ),
+                        ),
+                        Divider(
+                          color: Colors.grey,
+                          thickness: 1,
+                        ),
+                        ListTile(
+                          contentPadding: EdgeInsets.zero,
+                          leading: Icon(
+                            Icons.location_on_outlined,
+                            color: Colors.grey,
+                            size: 25,
+                          ),
+                          title: Text(
+                            Assets.instance.doctors[index % 2]['clinicName'],
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16),
+                          ),
+                          subtitle: Text(
+                            Assets.instance.doctors[index % 2]['location'],
+                            style: TextStyle(
+                                color: Colors.deepOrange, fontSize: 12),
+                          ),
+                          trailing: Icon(
+                            CupertinoIcons.right_chevron,
+                            color: Colors.grey,
+                            size: 25,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
             ),
-          ],
-        ),
-      ));
+          ));
 }
