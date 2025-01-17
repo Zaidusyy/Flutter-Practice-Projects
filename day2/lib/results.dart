@@ -50,19 +50,41 @@ class _ResultsState extends State<Results> with SingleTickerProviderStateMixin {
               size: 25,
             ),
           ),
-          Container(
-            margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 2),
-            decoration: BoxDecoration(
-              color: Colors.deepOrange,
-              borderRadius: BorderRadius.circular(15),
-            ),
-            child: Center(
-              child: Text(
-                'Add',
-                style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.white,
+          InkWell(
+            highlightColor: Colors.transparent,
+            splashColor: Colors.transparent,
+            onTap: () {
+              showModalBottomSheet(
+                isDismissible: true,
+                isScrollControlled: true,
+                backgroundColor: Colors.transparent,
+                enableDrag: true,
+                context: context,
+                builder: (context) => DraggableScrollableSheet(
+                  expand: false,
+                  initialChildSize: 0.6,
+                  minChildSize: 0.4,
+                  maxChildSize: 0.9,
+                  builder: (context, scrollController)=> _buildAddBottomSheet(scrollController),
+
+                ),
+              );
+            },
+
+            child: Container(
+              margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 2),
+              decoration: BoxDecoration(
+                color: Colors.deepOrange,
+                borderRadius: BorderRadius.circular(15),
+              ),
+              child: Center(
+                child: Text(
+                  'Add',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.white,
+                  ),
                 ),
               ),
             ),
@@ -137,42 +159,44 @@ class _ResultsState extends State<Results> with SingleTickerProviderStateMixin {
                         ),
                       ),
                     ),
-                    Container(
-                      height: 50,
-                      padding: EdgeInsets.symmetric(horizontal: 10),
-                      decoration: BoxDecoration(
-                          color: Colors.grey.withAlpha(40),
-                          borderRadius: BorderRadius.circular(15)),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        spacing: 10,
-                        children: [
-                          TextButton(
-                            style: ButtonStyle(splashFactory:NoSplash.splashFactory),
-                            onPressed: () {
-                              showModalBottomSheet(
-                                isScrollControlled: true,
-                                backgroundColor: Colors.transparent,
-                                  enableDrag: true,
-                                  context: context,
-                                  builder: (context) => _buildModalBottomSheet());
-                            },
-                            child: Text(
+                    InkWell(
+                      highlightColor: Colors.transparent,
+                      splashColor: Colors.transparent,
+                      onTap: () {
+                        showModalBottomSheet(
+                            isScrollControlled: true,
+                            backgroundColor: Colors.transparent,
+                            enableDrag: true,
+                            context: context,
+                            builder: (context) => _buildFilterBottomSheet());
+                      },
+                      child: Container(
+                        height: 50,
+                        padding: EdgeInsets.symmetric(horizontal: 10),
+                        decoration: BoxDecoration(
+                            color: Colors.grey.withAlpha(40),
+                            borderRadius: BorderRadius.circular(15)),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          spacing: 10,
+                          children: [
+                            Text(
                               'Filters',
-                              style: TextStyle(fontSize: 15,color: Colors.black),
-                            ),
-                          ),
-                          CircleAvatar(
-                            maxRadius: 12,
-                            backgroundColor: Colors.deepOrange,
-                            child: Text(
-                              '1',
                               style:
-                                  TextStyle(color: Colors.white, fontSize: 15),
+                                  TextStyle(fontSize: 15, color: Colors.black),
                             ),
-                          )
-                        ],
+                            CircleAvatar(
+                              maxRadius: 12,
+                              backgroundColor: Colors.deepOrange,
+                              child: Text(
+                                '3',
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 15),
+                              ),
+                            )
+                          ],
+                        ),
                       ),
                     )
                   ],
@@ -421,235 +445,341 @@ class _ResultsState extends State<Results> with SingleTickerProviderStateMixin {
       ),
     );
   }
-  _buildModalBottomSheet()=>Container(
-    padding: EdgeInsets.all(15),
-    width: double.infinity,
-    decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(30),
-            topRight: Radius.circular(30))),
-    child: Column(
-      spacing: 5,
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        SingleChildScrollView(
-          child: Column(
-            // mainAxisSize: MainAxisSize.min,
-            spacing: 10,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Container(
-                height: 5,
-                width: 50,
-                decoration: BoxDecoration(
-                    color: Colors.grey.withAlpha(150),
-                    borderRadius: BorderRadius.circular(20)),
-              ),
-              Row(
+
+  _buildFilterBottomSheet() => Container(
+        padding: EdgeInsets.all(15),
+        width: double.infinity,
+        decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(30), topRight: Radius.circular(30))),
+        child: Column(
+          spacing: 5,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            SingleChildScrollView(
+              child: Column(
+                // mainAxisSize: MainAxisSize.min,
+                spacing: 10,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text(
-                    'Filters',
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 25),
+                  Container(
+                    height: 5,
+                    width: 50,
+                    decoration: BoxDecoration(
+                        color: Colors.grey.withAlpha(150),
+                        borderRadius: BorderRadius.circular(20)),
                   ),
-                  Spacer(),
-                  CircleAvatar(
-                    radius: 25,
-                    backgroundColor: Colors.grey.withAlpha(40),
-                    child: IconButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      icon: Icon(
-                        CupertinoIcons.xmark,
-                        color: Colors.black,
-                        size: 25,
+                  Row(
+                    children: [
+                      Text(
+                        'Filters',
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 25),
                       ),
-                      color: Colors.grey,
-                    ),
-                  ),
-                ],
-              ),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  'Clinics & Labs',
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 18,
-                      fontWeight: FontWeight.w600),
-                  textAlign: TextAlign.start,
-                ),
-              ),
-              ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: 4,
-                  itemBuilder: (context, index) => ListTile(
-                    contentPadding: EdgeInsets.zero,
-                    leading: Container(
-                      padding: EdgeInsets.all(10),
-                      height: 50,
-                      width: 120,
-                      margin: EdgeInsets.symmetric(vertical: 6),
-                      decoration: BoxDecoration(
-                          border: Border.all(
-                              color: Colors.grey.withAlpha(100)),
-                          borderRadius: BorderRadius.circular(15),
-                          color: Colors.white),
-                      child: Center(
-                        child: Image.asset(
-                          'assets/images/' +
-                              ((index % 2 == 0)
-                                  ? 'abbott'
-                                  : 'synevologo') +
-                              '.png',
-                          height: 20,
-                        ),
-                      ),
-                    ),
-                    trailing: Transform.scale(
-                      scale: 1.5,
-                      child: Theme(
-                        data: ThemeData(
-                          checkboxTheme: CheckboxThemeData(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(4),
-                            ),
+                      Spacer(),
+                      CircleAvatar(
+                        radius: 25,
+                        backgroundColor: Colors.grey.withAlpha(40),
+                        child: IconButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          icon: Icon(
+                            CupertinoIcons.xmark,
+                            color: Colors.black,
+                            size: 25,
                           ),
-                        ),
-                        child: Checkbox(
-                          splashRadius: 15,
-                          side: BorderSide(
-                              color: Colors.grey.withAlpha(100)),
-                          activeColor: Colors.deepOrange,
-                          checkColor: Colors.white,
-                          value: (index == 0),
-                          onChanged: (newValue) {},
+                          color: Colors.grey,
                         ),
                       ),
-                    ),
-                  )),
-
-              Divider(),
-              Row(
-                children: [
-                  Text(
-                    'Results Date',
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 18,
-                        fontWeight: FontWeight.w600),
-                    textAlign: TextAlign.start,
+                    ],
                   ),
-                  Spacer(),
-                  Text(
-                    '21 Jan 2025',
-                    style: TextStyle(
-                      color: Colors.deepOrange,
-                      fontSize: 18,
-                    ),
-                    textAlign: TextAlign.end,
-                  ),
-                ],
-              ),
-              Divider(),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  'File Format',
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 18,
-                      fontWeight: FontWeight.w600),
-                  textAlign: TextAlign.start,
-                ),
-              ),
-              ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: 2,
-                  itemBuilder: (context, index) => ListTile(
-                    contentPadding: EdgeInsets.zero,
-
-                    // leading:       Icon(
-                    //   Icons.file_copy_rounded,
-                    //   color: Colors.black,
-                    //   size: 20,
-                    // ),
-                    title:Row(
-                      spacing: 5,
-                      children: [
-                        Icon(
-                          Icons.file_copy_rounded,
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      'Clinics & Labs',
+                      style: TextStyle(
                           color: Colors.black,
-                          size: 20,
-                        ),
-                        Text(
-                          (index%2==0)?'pdf':'txt',
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 18,
-                              fontWeight: FontWeight.w500),
-                        ),
-                      ],
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600),
+                      textAlign: TextAlign.start,
                     ),
-                    trailing: Transform.scale(
-                      scale: 1.5,
-                      child: Theme(
-                        data: ThemeData(
-                          checkboxTheme: CheckboxThemeData(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(4),
+                  ),
+                  ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: 4,
+                      itemBuilder: (context, index) => ListTile(
+                            contentPadding: EdgeInsets.zero,
+                            leading: Container(
+                              padding: EdgeInsets.all(10),
+                              height: 50,
+                              width: 120,
+                              margin: EdgeInsets.symmetric(vertical: 6),
+                              decoration: BoxDecoration(
+                                  border: Border.all(
+                                      color: Colors.grey.withAlpha(100)),
+                                  borderRadius: BorderRadius.circular(15),
+                                  color: Colors.white),
+                              child: Center(
+                                child: Image.asset(
+                                  'assets/images/' +
+                                      ((index % 2 == 0)
+                                          ? 'abbott'
+                                          : 'synevologo') +
+                                      '.png',
+                                  height: 20,
+                                ),
+                              ),
                             ),
-                          ),
-                        ),
-                        child: Checkbox(
-                          splashRadius: 15,
-                          side: BorderSide(
-                              color: Colors.grey.withAlpha(100)),
-                          activeColor: Colors.deepOrange,
-                          checkColor: Colors.white,
-                          value: (index == 0),
-                          onChanged: (newValue) {},
-                        ),
+                            trailing: Transform.scale(
+                              scale: 1.5,
+                              child: Theme(
+                                data: ThemeData(
+                                  checkboxTheme: CheckboxThemeData(
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(4),
+                                    ),
+                                  ),
+                                ),
+                                child: Checkbox(
+                                  splashRadius: 15,
+                                  side: BorderSide(
+                                      color: Colors.grey.withAlpha(100)),
+                                  activeColor: Colors.deepOrange,
+                                  checkColor: Colors.white,
+                                  value: (index == 0),
+                                  onChanged: (newValue) {},
+                                ),
+                              ),
+                            ),
+                          )),
+                  Divider(),
+                  Row(
+                    children: [
+                      Text(
+                        'Results Date',
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 18,
+                            fontWeight: FontWeight.w600),
+                        textAlign: TextAlign.start,
                       ),
+                      Spacer(),
+                      Text(
+                        '21 Jan 2025',
+                        style: TextStyle(
+                          color: Colors.deepOrange,
+                          fontSize: 18,
+                        ),
+                        textAlign: TextAlign.end,
+                      ),
+                    ],
+                  ),
+                  Divider(),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      'File Format',
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600),
+                      textAlign: TextAlign.start,
                     ),
-                  )),
-            ],
-          ),
-        ),
-        TextButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          child: Text(
-            'Clear All',
-            style: TextStyle(color: Colors.deepOrange, fontSize: 20),
-          ),
-          style: ButtonStyle(splashFactory: NoSplash.splashFactory,overlayColor:WidgetStateColor.transparent),
-        ),
-        SizedBox(
-          width: double.infinity,
-          height: 60,
-          child: ElevatedButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            style: ButtonStyle(
-                backgroundColor: WidgetStatePropertyAll(Colors.black),
-                foregroundColor: WidgetStatePropertyAll(Colors.white),splashFactory: NoSplash.splashFactory),
-            child: Text(
-              'Apply (3)',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 20,
+                  ),
+                  ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: 2,
+                      itemBuilder: (context, index) => ListTile(
+                            contentPadding: EdgeInsets.zero,
+
+                            // leading:       Icon(
+                            //   Icons.file_copy_rounded,
+                            //   color: Colors.black,
+                            //   size: 20,
+                            // ),
+                            title: Row(
+                              spacing: 5,
+                              children: [
+                                Icon(
+                                  Icons.file_copy_rounded,
+                                  color: Colors.black,
+                                  size: 20,
+                                ),
+                                Text(
+                                  (index % 2 == 0) ? 'pdf' : 'txt',
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w500),
+                                ),
+                              ],
+                            ),
+                            trailing: Transform.scale(
+                              scale: 1.5,
+                              child: Theme(
+                                data: ThemeData(
+                                  checkboxTheme: CheckboxThemeData(
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(4),
+                                    ),
+                                  ),
+                                ),
+                                child: Checkbox(
+                                  splashRadius: 15,
+                                  side: BorderSide(
+                                      color: Colors.grey.withAlpha(100)),
+                                  activeColor: Colors.deepOrange,
+                                  checkColor: Colors.white,
+                                  value: (index == 0),
+                                  onChanged: (newValue) {},
+                                ),
+                              ),
+                            ),
+                          )),
+                ],
               ),
             ),
-          ),
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text(
+                'Clear All',
+                style: TextStyle(color: Colors.deepOrange, fontSize: 20),
+              ),
+              style: ButtonStyle(
+                  splashFactory: NoSplash.splashFactory,
+                  overlayColor: WidgetStateColor.transparent),
+            ),
+            SizedBox(
+              width: double.infinity,
+              height: 60,
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                style: ButtonStyle(
+                    backgroundColor: WidgetStatePropertyAll(Colors.black),
+                    foregroundColor: WidgetStatePropertyAll(Colors.white),
+                    splashFactory: NoSplash.splashFactory),
+                child: Text(
+                  'Apply (3)',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
-      ],
-    ),
-  );
+      );
+
+  _buildAddBottomSheet(ScrollController scrollController) => Container(
+        padding: EdgeInsets.all(20),
+        width: double.infinity,
+        decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(30), topRight: Radius.circular(30))),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
+              height: 5,
+              width: 50,
+              decoration: BoxDecoration(
+                  color: Colors.grey.withAlpha(150),
+                  borderRadius: BorderRadius.circular(20)),
+            ),
+            Row(
+              children: [
+                Text(
+                  'Add Results',
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 25),
+                ),
+                Spacer(),
+                CircleAvatar(
+                  radius: 25,
+                  backgroundColor: Colors.grey.withAlpha(40),
+                  child: IconButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    icon: Icon(
+                      CupertinoIcons.xmark,
+                      color: Colors.black,
+                      size: 25,
+                    ),
+                    color: Colors.grey,
+                  ),
+                ),
+              ],
+            ),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                'Synchronize with any Indian Clinic or Lab',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                ),
+                textAlign: TextAlign.start,
+              ),
+            ),
+            SizedBox(
+              height: 15,
+            ),
+            TextFormField(
+              decoration: InputDecoration(
+                  hintText: 'Search for Clinic or Lab',
+                  hintStyle: TextStyle(color: Colors.grey, fontSize: 20),
+                  fillColor: Colors.grey.withAlpha(40),
+                  filled: true,
+                  border: UnderlineInputBorder(
+                      borderSide: BorderSide.none,
+                      borderRadius: BorderRadius.circular(10)),
+                  suffixIcon: Icon(
+                    CupertinoIcons.search,
+                    color: Colors.black,
+                  )),
+            ),
+            SizedBox(height: 15,),
+            Expanded(
+              child: GridView.builder(
+              controller: scrollController,
+                shrinkWrap: true,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      mainAxisExtent: 80,
+                      crossAxisSpacing: 15,
+                  mainAxisSpacing: 15),
+                  itemCount: 100,
+                  itemBuilder: (context, index) => Container(
+                        decoration: BoxDecoration(
+                            border:
+                                Border.all(color: Colors.grey.withAlpha(100)),
+                            borderRadius: BorderRadius.circular(15),
+                            color: Colors.white),
+                        child: Center(
+                          child: Image.asset(
+                            'assets/images/' +
+                                ((index % 3 == 0) ? 'abbott' : 'synevologo') +
+                                '.png',
+                            height: 30,
+                          ),
+                        ),
+                      )),
+            ),
+          ],
+        ),
+      );
 }
