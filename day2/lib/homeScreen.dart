@@ -14,7 +14,9 @@ class Homescreen extends StatefulWidget {
 }
 
 class _HomescreenState extends State<Homescreen> {
+  
   int _currentIndex = 0;
+  
 
   final List<Widget> _screens = [
     Home(),
@@ -70,7 +72,9 @@ class _HomescreenState extends State<Homescreen> {
                   currentIndex: _currentIndex,
                   onTap: (index) {
                     setState(() {
+                      
                       _currentIndex = index;
+                      
                     });
                   },
                   type: BottomNavigationBarType.fixed,
