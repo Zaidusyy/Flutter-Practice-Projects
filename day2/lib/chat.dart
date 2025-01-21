@@ -1,4 +1,3 @@
-import 'package:day2/Details.dart';
 import 'package:day2/chatscreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

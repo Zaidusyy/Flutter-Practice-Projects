@@ -33,7 +33,6 @@ class Details extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Hero(
-
                 tag: tag,
                 child: Container(
                   margin: EdgeInsets.symmetric(vertical: 10),
