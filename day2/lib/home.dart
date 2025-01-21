@@ -6,7 +6,7 @@ import 'generated/assets.dart';
 class Home extends StatelessWidget {
   Home({super.key});
 
-  List<String> _servicesNameList = [
+  final List<String> _servicesNameList = [
     'Consultations',
     'Medicines',
     'Laboratories'
@@ -356,11 +356,9 @@ class Home extends StatelessWidget {
                                       color: Colors.white),
                                   child: Center(
                                     child: Image.asset(
-                                      'assets/images/' +
-                                          ((index % 2 == 0)
+                                      'assets/images/${(index % 2 == 0)
                                               ? 'abbott'
-                                              : 'synevologo') +
-                                          '.png',
+                                              : 'synevologo'}.png',
                                     ),
                                   ),
                                 ),

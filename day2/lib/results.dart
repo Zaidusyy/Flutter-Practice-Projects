@@ -238,11 +238,9 @@ class _ResultsState extends State<Results> with SingleTickerProviderStateMixin {
                                 ),
                               ),
                               Image.asset(
-                                'assets/images/' +
-                                    ((index % 2 == 0)
+                                'assets/images/${(index % 2 == 0)
                                         ? 'synevologo'
-                                        : 'abbott') +
-                                    '.png',
+                                        : 'abbott'}.png',
                                 height: 20,
                               )
                             ],
@@ -393,11 +391,9 @@ class _ResultsState extends State<Results> with SingleTickerProviderStateMixin {
                                 ),
                               ),
                               Image.asset(
-                                'assets/images/' +
-                                    ((index % 2 == 0)
+                                'assets/images/${(index % 2 == 0)
                                         ? 'synevologo'
-                                        : 'abbott') +
-                                    '.png',
+                                        : 'abbott'}.png',
                                 height: 20,
                               )
                             ],
@@ -527,11 +523,9 @@ class _ResultsState extends State<Results> with SingleTickerProviderStateMixin {
                                   color: Colors.white),
                               child: Center(
                                 child: Image.asset(
-                                  'assets/images/' +
-                                      ((index % 2 == 0)
+                                  'assets/images/${(index % 2 == 0)
                                           ? 'abbott'
-                                          : 'synevologo') +
-                                      '.png',
+                                          : 'synevologo'}.png',
                                   height: 20,
                                 ),
                               ),
@@ -649,13 +643,13 @@ class _ResultsState extends State<Results> with SingleTickerProviderStateMixin {
               onPressed: () {
                 Navigator.pop(context);
               },
+              style: ButtonStyle(
+                  splashFactory: NoSplash.splashFactory,
+                  overlayColor: WidgetStateColor.transparent),
               child: Text(
                 'Clear All',
                 style: TextStyle(color: Colors.deepOrange, fontSize: 20),
               ),
-              style: ButtonStyle(
-                  splashFactory: NoSplash.splashFactory,
-                  overlayColor: WidgetStateColor.transparent),
             ),
             SizedBox(
               width: double.infinity,
@@ -773,9 +767,7 @@ class _ResultsState extends State<Results> with SingleTickerProviderStateMixin {
                             color: Colors.white),
                         child: Center(
                           child: Image.asset(
-                            'assets/images/' +
-                                ((index % 3 == 0) ? 'abbott' : 'synevologo') +
-                                '.png',
+                            'assets/images/${(index % 3 == 0) ? 'abbott' : 'synevologo'}.png',
                             height: 30,
                           ),
                         ),
