@@ -166,11 +166,20 @@ class _ResultsState extends State<Results> with SingleTickerProviderStateMixin {
                       splashColor: Colors.transparent,
                       onTap: () {
                         showModalBottomSheet(
-                            isScrollControlled: true,
-                            backgroundColor: Colors.transparent,
-                            enableDrag: true,
-                            context: context,
-                            builder: (context) => _buildFilterBottomSheet());
+                          isDismissible: true,
+                          isScrollControlled: true,
+                          backgroundColor: Colors.transparent,
+                          enableDrag: true,
+                          context: context,
+                          builder: (context) => DraggableScrollableSheet(
+                            expand: false,
+                            initialChildSize: 0.6,
+                            minChildSize: 0.4,
+                            maxChildSize: 0.9,
+                            builder: (context, scrollController)=> _buildFilterBottomSheet(scrollController),
+
+                          ),
+                        );
                       },
                       child: Container(
                         height: 50,
@@ -444,7 +453,7 @@ class _ResultsState extends State<Results> with SingleTickerProviderStateMixin {
     );
   }
 
-  _buildFilterBottomSheet() => Container(
+  _buildFilterBottomSheet(ScrollController scrollController) => Container(
         padding: EdgeInsets.all(15),
         width: double.infinity,
         decoration: BoxDecoration(
@@ -507,6 +516,7 @@ class _ResultsState extends State<Results> with SingleTickerProviderStateMixin {
                     ),
                   ),
                   ListView.builder(
+                    controller: scrollController,
                       shrinkWrap: true,
                       itemCount: 4,
                       itemBuilder: (context, index) => ListTile(
@@ -587,6 +597,7 @@ class _ResultsState extends State<Results> with SingleTickerProviderStateMixin {
                     ),
                   ),
                   ListView.builder(
+
                       shrinkWrap: true,
                       itemCount: 2,
                       itemBuilder: (context, index) => ListTile(
