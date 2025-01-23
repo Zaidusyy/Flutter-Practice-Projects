@@ -15,7 +15,6 @@ class _ResultsState extends State<Results> with SingleTickerProviderStateMixin {
   void initState() {
     super.initState();
     _tabController = TabController(length: 5, vsync: this);
-
   }
 
   @override
@@ -25,7 +24,6 @@ class _ResultsState extends State<Results> with SingleTickerProviderStateMixin {
   }
 
   String? _selectedValue = 'Show Latest First';
-  
 
   @override
   Widget build(BuildContext context) {
@@ -67,12 +65,11 @@ class _ResultsState extends State<Results> with SingleTickerProviderStateMixin {
                   initialChildSize: 0.6,
                   minChildSize: 0.4,
                   maxChildSize: 0.9,
-                  builder: (context, scrollController)=> _buildAddBottomSheet(scrollController),
-
+                  builder: (context, scrollController) =>
+                      _buildAddBottomSheet(scrollController),
                 ),
               );
             },
-
             child: Container(
               margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 2),
@@ -176,8 +173,8 @@ class _ResultsState extends State<Results> with SingleTickerProviderStateMixin {
                             initialChildSize: 0.6,
                             minChildSize: 0.4,
                             maxChildSize: 0.9,
-                            builder: (context, scrollController)=> _buildFilterBottomSheet(scrollController),
-
+                            builder: (context, scrollController) =>
+                                _buildFilterBottomSheet(scrollController),
                           ),
                         );
                       },
@@ -247,9 +244,7 @@ class _ResultsState extends State<Results> with SingleTickerProviderStateMixin {
                                 ),
                               ),
                               Image.asset(
-                                'assets/images/${(index % 2 == 0)
-                                        ? 'synevologo'
-                                        : 'abbott'}.png',
+                                'assets/images/${(index % 2 == 0) ? 'synevologo' : 'abbott'}.png',
                                 height: 20,
                               )
                             ],
@@ -400,9 +395,7 @@ class _ResultsState extends State<Results> with SingleTickerProviderStateMixin {
                                 ),
                               ),
                               Image.asset(
-                                'assets/images/${(index % 2 == 0)
-                                        ? 'synevologo'
-                                        : 'abbott'}.png',
+                                'assets/images/${(index % 2 == 0) ? 'synevologo' : 'abbott'}.png',
                                 height: 20,
                               )
                             ],
@@ -516,7 +509,7 @@ class _ResultsState extends State<Results> with SingleTickerProviderStateMixin {
                     ),
                   ),
                   ListView.builder(
-                    controller: scrollController,
+                      controller: scrollController,
                       shrinkWrap: true,
                       itemCount: 4,
                       itemBuilder: (context, index) => ListTile(
@@ -533,9 +526,7 @@ class _ResultsState extends State<Results> with SingleTickerProviderStateMixin {
                                   color: Colors.white),
                               child: Center(
                                 child: Image.asset(
-                                  'assets/images/${(index % 2 == 0)
-                                          ? 'abbott'
-                                          : 'synevologo'}.png',
+                                  'assets/images/${(index % 2 == 0) ? 'abbott' : 'synevologo'}.png',
                                   height: 20,
                                 ),
                               ),
@@ -597,7 +588,6 @@ class _ResultsState extends State<Results> with SingleTickerProviderStateMixin {
                     ),
                   ),
                   ListView.builder(
-
                       shrinkWrap: true,
                       itemCount: 2,
                       itemBuilder: (context, index) => ListTile(
@@ -759,16 +749,18 @@ class _ResultsState extends State<Results> with SingleTickerProviderStateMixin {
                     color: Colors.black,
                   )),
             ),
-            SizedBox(height: 15,),
+            SizedBox(
+              height: 15,
+            ),
             Expanded(
               child: GridView.builder(
-              controller: scrollController,
-                shrinkWrap: true,
+                  controller: scrollController,
+                  shrinkWrap: true,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
                       mainAxisExtent: 80,
                       crossAxisSpacing: 15,
-                  mainAxisSpacing: 15),
+                      mainAxisSpacing: 15),
                   itemCount: 100,
                   itemBuilder: (context, index) => Container(
                         decoration: BoxDecoration(
