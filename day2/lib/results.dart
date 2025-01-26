@@ -170,8 +170,8 @@ class _ResultsState extends State<Results> with SingleTickerProviderStateMixin {
                           context: context,
                           builder: (context) => DraggableScrollableSheet(
                             expand: false,
-                            initialChildSize: 0.6,
-                            minChildSize: 0.4,
+                            initialChildSize: 0.75,
+                            minChildSize: 0.5,
                             maxChildSize: 0.9,
                             builder: (context, scrollController) =>
                                 _buildFilterBottomSheet(scrollController),
@@ -453,9 +453,8 @@ class _ResultsState extends State<Results> with SingleTickerProviderStateMixin {
             color: Colors.white,
             borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(30), topRight: Radius.circular(30))),
-        child: Column(
-          spacing: 5,
-          mainAxisSize: MainAxisSize.min,
+        child: Stack(
+          alignment: Alignment.topCenter,
           children: [
             SingleChildScrollView(
               child: Column(
@@ -589,7 +588,7 @@ class _ResultsState extends State<Results> with SingleTickerProviderStateMixin {
                   ),
                   ListView.builder(
                       shrinkWrap: true,
-                      itemCount: 2,
+                      itemCount: 3,
                       itemBuilder: (context, index) => ListTile(
                             contentPadding: EdgeInsets.zero,
 
@@ -640,38 +639,48 @@ class _ResultsState extends State<Results> with SingleTickerProviderStateMixin {
                 ],
               ),
             ),
-            TextButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              style: ButtonStyle(
-                  splashFactory: NoSplash.splashFactory,
-                  overlayColor: WidgetStateColor.transparent),
-              child: Text(
-                'Clear All',
-                style: TextStyle(color: Colors.deepOrange, fontSize: 20),
-              ),
-            ),
-            SizedBox(
-              width: double.infinity,
-              height: 60,
-              child: ElevatedButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                style: ButtonStyle(
-                    backgroundColor: WidgetStatePropertyAll(Colors.black),
-                    foregroundColor: WidgetStatePropertyAll(Colors.white),
-                    splashFactory: NoSplash.splashFactory),
-                child: Text(
-                  'Apply (3)',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
+            Positioned(
+              bottom: 10,
+              left: 0,
+              right: 0,
+              child: Column(
+                children: [
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    style: ButtonStyle(
+                        splashFactory: NoSplash.splashFactory,
+                        overlayColor: WidgetStateColor.transparent),
+                    child: Text(
+                      'Clear All',
+                      style: TextStyle(color: Colors.deepOrange, fontSize: 20),
+                    ),
                   ),
-                ),
+                  SizedBox(
+                    width: double.infinity,
+                    height: 60,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      style: ButtonStyle(
+                          backgroundColor: WidgetStatePropertyAll(Colors.black),
+                          foregroundColor: WidgetStatePropertyAll(Colors.white),
+                          splashFactory: NoSplash.splashFactory),
+                      child: Text(
+                        'Apply (3)',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
+
           ],
         ),
       );

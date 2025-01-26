@@ -39,7 +39,7 @@ class Profile extends StatelessWidget {
             spacing: 5,
             children: [
               Container(
-                margin: EdgeInsets.symmetric(vertical: 15),
+                margin: EdgeInsets.only(top: 15,bottom: 5),
                 width: double.infinity,
                 padding: EdgeInsets.all(20),
                 decoration: BoxDecoration(
@@ -51,7 +51,7 @@ class Profile extends StatelessWidget {
                   children: [
                     Text(
                       '🙌 Long time no see! Your last checkup was 12 months ago.We recommend visiting your doctor.',
-                      style: TextStyle(color: Colors.deepOrange, fontSize: 15),
+                      style: TextStyle(color: Colors.deepOrange, fontSize: 14),
                     ),
                     InkWell(
                       highlightColor: Colors.transparent,
@@ -66,13 +66,13 @@ class Profile extends StatelessWidget {
                             'Plan a Checkup',
                             style: TextStyle(
                                 color: Colors.deepOrange,
-                                fontSize: 20,
+                                fontSize: 18,
                                 fontWeight: FontWeight.bold),
                           ),
                           Icon(
                             Icons.arrow_forward_ios_outlined,
                             color: Colors.deepOrange,
-                            size: 20,
+                            size: 18,
                           )
                         ],
                       ),
@@ -102,7 +102,8 @@ class Profile extends StatelessWidget {
                     textAlign: TextAlign.center,
                   ),
                 ),
-              )
+              ),
+              SizedBox(height: 100,)
             ],
           ),
         ),

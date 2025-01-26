@@ -12,7 +12,7 @@ class Chatscreen extends StatelessWidget {
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
-          leadingWidth:20,
+          leadingWidth:30,
           backgroundColor: Colors.white,
           title: Row(
             mainAxisAlignment: MainAxisAlignment.start,
