@@ -3,7 +3,6 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'dart:async';
 
-import '../main.dart';
 import 'VideoPlayerScreen.dart';
 
 
@@ -14,7 +13,7 @@ const String apiKey = "api key";
 class PixabaySearchScreen extends StatefulWidget {
   final String username; // Accepts username
 
-  PixabaySearchScreen({required this.username});
+  const PixabaySearchScreen({super.key, required this.username});
 
   @override
   _PixabaySearchScreenState createState() => _PixabaySearchScreenState();
