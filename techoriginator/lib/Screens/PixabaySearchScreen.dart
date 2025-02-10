@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'dart:async';
-
 import 'VideoPlayerScreen.dart';
 
 
@@ -11,7 +10,7 @@ const String apiKey = "api key";
 
 
 class PixabaySearchScreen extends StatefulWidget {
-  final String username; // Accepts username
+  final String username;
 
   const PixabaySearchScreen({super.key, required this.username});
 
@@ -109,7 +108,7 @@ class _PixabaySearchScreenState extends State<PixabaySearchScreen> {
                   items: ["image", "video"].map((String type) {
                     return DropdownMenuItem<String>(
                       value: type,
-                      child: Text(type.toUpperCase()),
+                      child: Text(type),
                     );
                   }).toList(),
                   onChanged: (value) {

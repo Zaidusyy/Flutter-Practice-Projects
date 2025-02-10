@@ -59,6 +59,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         'name': _nameController.text.trim(),
         'email': _emailController.text.trim(),
         'uid': userCredential.user!.uid,
+
+        //added it after apk build
+        'time':DateTime.now().toString()
       });
 
       ScaffoldMessenger.of(context).showSnackBar(
@@ -71,11 +74,12 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         SnackBar(content: Text(e.message ?? "An error occurred")),
       );
     }
-
     setState(() {
       _isLoading = false;
     });
 
+
+    //this code need to be inside the try bloc after all successfull firebase operation
     final name=_nameController.text.toString();
     Navigator.push(
       context,
@@ -130,7 +134,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   ? const Center(child: CircularProgressIndicator())
                   : SizedBox(
                 width: double.infinity,
-                child: ElevatedButton(
+                  child: ElevatedButton(
                   onPressed: _registerUser,
                   child: const Text("Register"),
                 ),
