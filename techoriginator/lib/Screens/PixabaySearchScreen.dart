@@ -6,7 +6,10 @@ import 'dart:async';
 import '../main.dart';
 import 'VideoPlayerScreen.dart';
 
-const String apiKey = "48754428-aef88032b7da071abb8e7cada";
+
+//add your api key 
+const String apiKey = "api key";
+
 
 class PixabaySearchScreen extends StatefulWidget {
   final String username; // Accepts username
