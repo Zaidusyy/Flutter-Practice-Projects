@@ -5,8 +5,13 @@ import 'dart:async';
 import 'VideoPlayerScreen.dart';
 
 
-//add your api key 
-const String apiKey = "api key";
+// //add your api key
+// const String apiKey = "api key";
+// you can use this api key for now to test it will be disabled by me after week as it may get leaked cuz Repository is public
+const String apiKey  = "48754428-aef88032b7da071abb8e7cada";
+
+
+
 
 
 class PixabaySearchScreen extends StatefulWidget {
@@ -61,6 +66,7 @@ class _PixabaySearchScreenState extends State<PixabaySearchScreen> {
   }
 
   void onSearchChanged(String query) {
+    //this part will add a half second dealy in api calling which is optimization suggestion i took form the AI the code is also work without _debounce but it make too many api requests which is not good
     if (_debounce?.isActive ?? false) _debounce!.cancel();
     _debounce = Timer(Duration(milliseconds: 500), () {
       setState(() {
@@ -76,6 +82,7 @@ class _PixabaySearchScreenState extends State<PixabaySearchScreen> {
     super.dispose();
   }
 
+  //this is not added in task but i have made this too
   void _playVideo(String videoUrl) {
     Navigator.push(
       context,

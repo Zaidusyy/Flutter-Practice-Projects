@@ -4,7 +4,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'Screens/PixabaySearchScreen.dart';
 
-const String apiKey = "48754428-aef88032b7da071abb8e7cada";
+
+//NOTE : The code is fully written by me after writing it i give it to ai to optimize it so it do little bit of optimization in code like adding dealy in search using time of 500 milliseconds and using ?? when value is null so it use default value that i have provided for example [] empty list when there is no data in the result list or the value is null
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
