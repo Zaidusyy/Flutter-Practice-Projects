@@ -81,7 +81,7 @@ class _WallpaperState extends State<Wallpaper> {
         (category=="Popular")?'https://api.pexels.com/v1/curated?per_page=80':'https://api.pexels.com/v1/search?query=${searchQueries[category]}&per_page=80&orientation=portrait'),
       headers: {
         "Authorization":
-            "Your API KEY"
+            "1wboIPOZMbHmQNRXpwsGNVN8F4QPbFPI4PHicC3yxfj8K6RvgCCbNWhq"
       },
     );
 
@@ -95,13 +95,13 @@ class _WallpaperState extends State<Wallpaper> {
       //   wallpapers[category]?.add(result['photos'][i]['src']['portrait'].toString());
       // }
     }
-
-    setState(() {}); // Update UI
   }
 
    getAllPhotos() async {
     for (var category in searchQueries.keys) {
       await getPhotos(category);
+      setState(() {
+      });
     }
   }
 
